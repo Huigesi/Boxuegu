@@ -1,6 +1,7 @@
 package cn.edu.gdmec.android.boxuegu;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ private TextView tv_version;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         tv_version=findViewById(R.id.tv_version);
         try {
             PackageInfo packageInfo=getPackageManager().getPackageInfo(getPackageName(),0);
