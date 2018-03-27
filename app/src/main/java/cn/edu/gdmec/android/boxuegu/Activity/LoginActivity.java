@@ -50,6 +50,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         btn_login.setOnClickListener(this);
         tv_main_title.setText("登录");
+
         tv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
