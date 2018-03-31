@@ -13,7 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import cn.edu.gdmec.android.boxuegu.MD5Utils;
+import cn.edu.gdmec.android.boxuegu.Utils.MD5Utils;
 import cn.edu.gdmec.android.boxuegu.R;
 
 

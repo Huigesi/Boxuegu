@@ -19,6 +19,11 @@
         <activity android:name=".Activity.SplashActivity">
 
         </activity>
+        <activity android:name=".Activity.LoginActivity"/>
+        <activity android:name=".Activity.RegisterActivity"/>
+        <activity android:name=".Activity.ActivitySettingActivity"/>
+        <activity android:name=".Activity.ActivityModifyPswActivity"/>
+        <activity android:name=".Activity.ActivityFindPswActivity"/>
     </application>
 
 </manifest>

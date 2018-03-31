@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import cn.edu.gdmec.android.boxuegu.MD5Utils;
+import cn.edu.gdmec.android.boxuegu.Utils.MD5Utils;
 import cn.edu.gdmec.android.boxuegu.R;
 
 
@@ -68,8 +68,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         tv_find_psw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* Intent intent=new Intent(LoginActivity.this,FindPswActivity.class);
-                startActivity(intent);*/
+               Intent intent=new Intent(LoginActivity.this,ActivityFindPswActivity.class);
+                startActivity(intent);
             }
         });
     }
