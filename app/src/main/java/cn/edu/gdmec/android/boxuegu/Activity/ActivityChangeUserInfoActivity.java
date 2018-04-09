@@ -19,7 +19,6 @@ import cn.edu.gdmec.android.boxuegu.R;
 
 public class ActivityChangeUserInfoActivity extends Activity implements View.OnClickListener {
 
-    private ImageView ivDelete;
     private TextView tv_back;
     private TextView tv_main_title;
     private TextView tv_save;
@@ -50,6 +49,9 @@ public class ActivityChangeUserInfoActivity extends Activity implements View.OnC
         flag = getIntent().getIntExtra("flag", 0);
         tv_main_title.setText(title);
         title_bar.setBackgroundColor(Color.parseColor("#30B4FF"));
+        tv_back.setOnClickListener(this);
+        iv_delete.setOnClickListener(this);
+        tv_save.setOnClickListener(this);
 
         tv_save.setVisibility(View.VISIBLE);
         if (!TextUtils.isEmpty(content)) {
@@ -138,20 +140,24 @@ public class ActivityChangeUserInfoActivity extends Activity implements View.OnC
                         if (!TextUtils.isEmpty(etContent)) {
                             data.putExtra("nickName", etContent);
                             setResult(RESULT_OK, data);
-                            Toast.makeText(ActivityChangeUserInfoActivity.this, "保存成功", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ActivityChangeUserInfoActivity.this,
+                                    "保存成功", Toast.LENGTH_SHORT).show();
                             ActivityChangeUserInfoActivity.this.finish();
                         } else {
-                            Toast.makeText(ActivityChangeUserInfoActivity.this, "昵称不能为空", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ActivityChangeUserInfoActivity.this,
+                                    "昵称不能为空", Toast.LENGTH_SHORT).show();
                         }
                         break;
                     case 2:
                         if (!TextUtils.isEmpty(etContent)) {
                             data.putExtra("signature", etContent);
                             setResult(RESULT_OK, data);
-                            Toast.makeText(ActivityChangeUserInfoActivity.this, "保存成功", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ActivityChangeUserInfoActivity.this,
+                                    "保存成功", Toast.LENGTH_SHORT).show();
                             ActivityChangeUserInfoActivity.this.finish();
                         } else {
-                            Toast.makeText(ActivityChangeUserInfoActivity.this, "签名不能为空", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ActivityChangeUserInfoActivity.this,
+                                    "签名不能为空", Toast.LENGTH_SHORT).show();
                         }
                 }
                 break;
