@@ -35,7 +35,7 @@ public class ActivitySettingActivity extends Activity implements View.OnClickLis
     private void initView() {
         tv_back = (TextView) findViewById(R.id.tv_back);
         tv_main_title = (TextView) findViewById(R.id.tv_main_title);
-        tv_save = (TextView) findViewById(R.id.tv_save);
+        //tv_save = (TextView) findViewById(R.id.tv_save);
         title_bar = (RelativeLayout) findViewById(R.id.title_bar);
         rl_modify_psw = (RelativeLayout) findViewById(R.id.rl_modify_psw);
         rl_security_setting = (RelativeLayout) findViewById(R.id.rl_security_setting);
