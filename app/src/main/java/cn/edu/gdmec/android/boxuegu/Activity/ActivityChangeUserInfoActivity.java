@@ -47,6 +47,7 @@ public class ActivityChangeUserInfoActivity extends Activity implements View.OnC
         title = getIntent().getStringExtra("title");
         content = getIntent().getStringExtra("content");
         flag = getIntent().getIntExtra("flag", 0);
+
         tv_main_title.setText(title);
         title_bar.setBackgroundColor(Color.parseColor("#30B4FF"));
         tv_back.setOnClickListener(this);

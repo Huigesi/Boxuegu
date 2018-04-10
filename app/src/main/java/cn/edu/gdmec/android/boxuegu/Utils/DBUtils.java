@@ -29,7 +29,7 @@ public class DBUtils {
         }
         return instance;
     }
-
+    //insert into userinfo(userName,nickName,sex,signature) values(?,?,?);
     public void saveUserInfo(UserBean bean) {
         ContentValues contentValues = new ContentValues();
         contentValues.put("userName", bean.userName);
@@ -54,7 +54,7 @@ public class DBUtils {
         cursor.close();
         return userBean;
     }
-
+    //update userinfo set nickName=? where userName=?;
     public void updateUserInfo(String key, String value, String userName) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(key, value);
