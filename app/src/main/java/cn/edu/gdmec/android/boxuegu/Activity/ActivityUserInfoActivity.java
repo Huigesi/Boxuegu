@@ -37,6 +37,10 @@ public class ActivityUserInfoActivity extends Activity implements View.OnClickLi
     private String new_info;
     private static final int CHANGE_NICKNAME = 1;
     private static final int CHANGE_SIGNATURE = 2;
+    private static final int CHANGE_QQ = 3;
+
+    private TextView tv_QQ;
+    private RelativeLayout rl_QQ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +75,10 @@ public class ActivityUserInfoActivity extends Activity implements View.OnClickLi
         rl_nickName.setOnClickListener(this);
         rl_sex.setOnClickListener(this);
         rl_signature.setOnClickListener(this);
+        tv_QQ = (TextView) findViewById(R.id.tv_QQ);
+        tv_QQ.setOnClickListener(this);
+        rl_QQ = (RelativeLayout) findViewById(R.id.rl_QQ);
+        rl_QQ.setOnClickListener(this);
     }
 
     private void initData() {
@@ -81,6 +89,7 @@ public class ActivityUserInfoActivity extends Activity implements View.OnClickLi
             bean.nickName = "问答精灵";
             bean.sex = "男";
             bean.signature = "问答精灵";
+            bean.QQ="未添加";
             DBUtils.getInstance(this).saveUserInfo(bean);
         }
         satValue(bean);
@@ -91,6 +100,7 @@ public class ActivityUserInfoActivity extends Activity implements View.OnClickLi
         tv_nickName.setText(bean.nickName);
         tv_sex.setText(bean.sex);
         tv_signature.setText(bean.signature);
+        tv_QQ.setText(bean.QQ);
     }
 
     private void sexDialog(String sex) {
@@ -152,6 +162,17 @@ public class ActivityUserInfoActivity extends Activity implements View.OnClickLi
                             new_info, spUserName);
                 }
                 break;
+            case CHANGE_QQ:
+                if (data != null) {
+                    new_info = data.getStringExtra("QQ");
+                    if (TextUtils.isEmpty(new_info)) {
+                        return;
+                    }
+                    tv_QQ.setText(new_info);
+                    DBUtils.getInstance(ActivityUserInfoActivity.this).updateUserInfo("QQ",
+                            new_info, spUserName);
+                }
+                break;
         }
     }
 
@@ -168,7 +189,7 @@ public class ActivityUserInfoActivity extends Activity implements View.OnClickLi
                 bdName.putString("content", name);
                 bdName.putString("title", "昵称");
                 bdName.putInt("flag", 1);
-                enterActivityForResult(ActivityChangeUserInfoActivity.class,CHANGE_NICKNAME,bdName);
+                enterActivityForResult(ActivityChangeUserInfoActivity.class, CHANGE_NICKNAME, bdName);
                 break;
             case R.id.rl_sex:
                 String sex = tv_sex.getText().toString();
@@ -181,7 +202,16 @@ public class ActivityUserInfoActivity extends Activity implements View.OnClickLi
                 bdSignature.putString("content", signature);
                 bdSignature.putString("title", "签名");
                 bdSignature.putInt("flag", 2);
-                enterActivityForResult(ActivityChangeUserInfoActivity.class,CHANGE_SIGNATURE,bdSignature);
+                enterActivityForResult(ActivityChangeUserInfoActivity.class, CHANGE_SIGNATURE, bdSignature);
+                break;
+            case R.id.rl_QQ:
+                //签名
+                String QQ1 = tv_QQ.getText().toString();
+                Bundle QQ = new Bundle();
+                QQ.putString("content", QQ1);
+                QQ.putString("title", "QQ号");
+                QQ.putInt("flag", 3);
+                enterActivityForResult(ActivityChangeUserInfoActivity.class, CHANGE_QQ, QQ);
                 break;
         }
     }

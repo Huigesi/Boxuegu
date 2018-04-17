@@ -160,6 +160,18 @@ public class ActivityChangeUserInfoActivity extends Activity implements View.OnC
                             Toast.makeText(ActivityChangeUserInfoActivity.this,
                                     "签名不能为空", Toast.LENGTH_SHORT).show();
                         }
+                        break;
+                    case 3:
+                        if (!TextUtils.isEmpty(etContent)) {
+                            data.putExtra("QQ", etContent);
+                            setResult(RESULT_OK, data);
+                            Toast.makeText(ActivityChangeUserInfoActivity.this,
+                                    "保存成功", Toast.LENGTH_SHORT).show();
+                            ActivityChangeUserInfoActivity.this.finish();
+                        } else {
+                            Toast.makeText(ActivityChangeUserInfoActivity.this,
+                                    "QQ号不能为空", Toast.LENGTH_SHORT).show();
+                        }
                 }
                 break;
         }

@@ -150,6 +150,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             else {
                 setSelectStatus(2);
             }
+
         }
     }
 }
