@@ -71,6 +71,7 @@ public class ExercisesListItemAdapter extends BaseAdapter {
         if (bean != null) {
             holder.tvOrder.setText(position + 1 + "");
             holder.tvTitle.setText(bean.title);
+            holder.tvContent.setText(bean.content);
             holder.tvOrder.setBackgroundResource(bean.background);
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -82,6 +83,7 @@ public class ExercisesListItemAdapter extends BaseAdapter {
                     Intent intent=new Intent(context, ActivityExercisesDetailActivity.class);
                     intent.putExtra("id",bean.id);
                     intent.putExtra("title",bean.title);
+
                     ((Activity)context).startActivityForResult(intent,000);
                 }
             });
