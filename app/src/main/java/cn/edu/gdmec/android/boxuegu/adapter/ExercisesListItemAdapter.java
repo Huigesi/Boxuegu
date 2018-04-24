@@ -72,8 +72,14 @@ public class ExercisesListItemAdapter extends BaseAdapter {
         if (bean != null) {
             holder.tvOrder.setText(position + 1 + "");
             holder.tvTitle.setText(bean.title);
+            Log.i("readExercises",AnalysisUtils.readExercises(context,position+1)+"");
+            if (AnalysisUtils.readExercises(context,position+1)){
+                holder.tvContent.setText("已完成");
+            }else{
+                holder.tvContent.setText(bean.content);
+            }
 
-            holder.tvContent.setText(bean.content);
+
 
             holder.tvOrder.setBackgroundResource(bean.background);
             convertView.setOnClickListener(new View.OnClickListener() {
@@ -83,11 +89,11 @@ public class ExercisesListItemAdapter extends BaseAdapter {
                         return;
                     }
                     //跳转到习题界面
-                    Intent intent=new Intent(context, ActivityExercisesDetailActivity.class);
-                    intent.putExtra("id",bean.id);
-                    intent.putExtra("title",bean.title);
+                    Intent intent = new Intent(context, ActivityExercisesDetailActivity.class);
+                    intent.putExtra("id", bean.id);
+                    intent.putExtra("title", bean.title);
 
-                    ((Activity)context).startActivityForResult(intent,000);
+                    ((Activity) context).startActivityForResult(intent, 000);
                 }
             });
         }

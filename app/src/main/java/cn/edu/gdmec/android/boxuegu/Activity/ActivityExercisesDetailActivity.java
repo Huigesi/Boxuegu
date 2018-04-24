@@ -55,7 +55,7 @@ public class ActivityExercisesDetailActivity extends Activity {
             e.printStackTrace();
         }
     }
-    private int exrtcisesid=0;
+    private int count=0;
 
     private void initView() {
         tv_back = (TextView) findViewById(R.id.tv_back);
@@ -67,7 +67,7 @@ public class ActivityExercisesDetailActivity extends Activity {
             @Override
             public void onClick(View v) {
                 ActivityExercisesDetailActivity.this.finish();
-                setResult(RESULT_OK);
+
             }
         });
         adapter = new ExercisesDetailListItemAdapter(ActivityExercisesDetailActivity.this,
@@ -189,6 +189,18 @@ public class ActivityExercisesDetailActivity extends Activity {
                     }
                 });
         tv_dibu = (TextView) findViewById(R.id.tv_dibu);
+        adapter.setOnItemListener(new ExercisesDetailListItemAdapter.OnItemListener() {
+            @Override
+            public void onItem(View view, int position) {
+                count++;
+                tv_dibu.setText("第"+(position+1)+"题完成，共"+adapter.getItemCount()+"题");
+                if (count==5){
+                    AnalysisUtils.saveExercises(ActivityExercisesDetailActivity.this,id);
+                    setResult(RESULT_OK);
+                }
+            }
+        });
+
 
 
         adapter.setData(ebl);

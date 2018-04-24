@@ -69,6 +69,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private void setSelectStatus(int index) {
         switch (index) {
             case 0:
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_body, new CourseFragment()).commit();
                 bottom_bar_image_course.setImageResource(R.drawable.main_course_icon_selected);
                 bottom_bar_text_course.setTextColor(Color.parseColor("#0097F7"));
 
@@ -79,6 +80,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 bottom_bar_image_myinfo.setImageResource(R.drawable.main_my_icon);
                 break;
             case 1:
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_body, new ExercisesFragment()).commit();
                 bottom_bar_image_exercises.setImageResource(R.drawable.main_exercises_icon_selected);
                 bottom_bar_text_exercises.setTextColor(Color.parseColor("#0097F7"));
 
@@ -89,6 +91,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 bottom_bar_image_myinfo.setImageResource(R.drawable.main_my_icon);
                 break;
             case 2:
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_body, new FragmentMyinfoFragment()).commit();
                 bottom_bar_image_myinfo.setImageResource(R.drawable.main_my_icon_selected);
                 bottom_bar_text_myinfo.setTextColor(Color.parseColor("#0097F7"));
 
@@ -150,10 +153,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             else {
                 setSelectStatus(2);
             }
-            if (requestCode==000){
-                setSelectStatus(1);
-            }
-
+        }
+        if (requestCode==000){
+            setSelectStatus(1);
         }
     }
 }
