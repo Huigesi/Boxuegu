@@ -5,8 +5,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.LayoutInflater;
@@ -15,11 +17,16 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.edu.gdmec.android.boxuegu.Bean.CourseBean;
 import cn.edu.gdmec.android.boxuegu.R;
+import cn.edu.gdmec.android.boxuegu.Utils.AnalysisUtils;
 import cn.edu.gdmec.android.boxuegu.adapter.ADViewPagerAdapter;
+import cn.edu.gdmec.android.boxuegu.adapter.CourseListItemAdapter;
 
 
 public class CourseFragment extends Fragment {
@@ -33,6 +40,8 @@ public class CourseFragment extends Fragment {
 
     public static final int MSG_AD_SLID = 002;
     private List<ImageView> viewList;
+    private List<CourseBean> rList;
+    private CourseListItemAdapter adapter;
     private ADViewPagerAdapter viewPagerAdapter;
     private List<View> dots;
     private int oldPoints = 0;
@@ -64,8 +73,22 @@ public class CourseFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        getCourseData();
+
         initView(view);
         setViewPager();
+    }
+
+    private void getCourseData() {
+        try {
+            InputStream is = getActivity().getResources().getAssets().open("chaptertitle.xml");
+            rList= AnalysisUtils.getCourseInfos(is);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void setViewPager() {
@@ -87,6 +110,14 @@ public class CourseFragment extends Fragment {
     }
 
     private void initView(View view) {
+
+        rv_list=view.findViewById(R.id.rv_list);
+        adapter=new CourseListItemAdapter(getActivity());
+        adapter.setData(rList);
+        rv_list.setLayoutManager(new GridLayoutManager(getActivity(),3));
+        rv_list.setAdapter(adapter);
+
+
         vp_advertBanner = view.findViewById(R.id.vp_advertBanner);
         rl_adBanner = view.findViewById(R.id.rl_adBanner);
 

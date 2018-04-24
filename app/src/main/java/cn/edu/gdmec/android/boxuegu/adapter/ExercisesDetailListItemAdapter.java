@@ -272,4 +272,5 @@ public class ExercisesDetailListItemAdapter extends
                        ImageView iv_b, ImageView iv_c,
                        ImageView iv_d);
     }
+
 }

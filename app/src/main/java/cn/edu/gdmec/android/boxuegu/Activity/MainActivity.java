@@ -150,6 +150,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             else {
                 setSelectStatus(2);
             }
+            if (requestCode==000){
+                setSelectStatus(1);
+            }
 
         }
     }

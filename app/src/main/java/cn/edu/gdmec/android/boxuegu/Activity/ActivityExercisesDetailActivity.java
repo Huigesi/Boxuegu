@@ -1,9 +1,8 @@
 package cn.edu.gdmec.android.boxuegu.Activity;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.app.Activity;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -22,7 +21,7 @@ import cn.edu.gdmec.android.boxuegu.R;
 import cn.edu.gdmec.android.boxuegu.Utils.AnalysisUtils;
 import cn.edu.gdmec.android.boxuegu.adapter.ExercisesDetailListItemAdapter;
 
-public class ActivityExercisesDetailActivity extends Activity  {
+public class ActivityExercisesDetailActivity extends Activity {
 
     private TextView tv_back;
     private TextView tv_main_title;
@@ -32,6 +31,7 @@ public class ActivityExercisesDetailActivity extends Activity  {
     private List<ExercisesBean> ebl;
     private ExercisesDetailListItemAdapter adapter;
     private RecyclerView rv_list;
+    private TextView tv_dibu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +48,14 @@ public class ActivityExercisesDetailActivity extends Activity  {
         try {
             InputStream is = getResources().getAssets().open("chapter" + id + ".xml");
             ebl = AnalysisUtils.getExercisesInfos(is);
-            Log.i("ebl",ebl.size()+"");
+            Log.i("ebl", ebl.size() + "");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+    private int exrtcisesid=0;
 
     private void initView() {
         tv_back = (TextView) findViewById(R.id.tv_back);
@@ -66,6 +67,7 @@ public class ActivityExercisesDetailActivity extends Activity  {
             @Override
             public void onClick(View v) {
                 ActivityExercisesDetailActivity.this.finish();
+                setResult(RESULT_OK);
             }
         });
         adapter = new ExercisesDetailListItemAdapter(ActivityExercisesDetailActivity.this,
@@ -186,6 +188,8 @@ public class ActivityExercisesDetailActivity extends Activity  {
                         AnalysisUtils.setABCDEnable(false, iv_a, iv_b, iv_c, iv_d);
                     }
                 });
+        tv_dibu = (TextView) findViewById(R.id.tv_dibu);
+
 
         adapter.setData(ebl);
 
@@ -194,6 +198,7 @@ public class ActivityExercisesDetailActivity extends Activity  {
                 LinearLayoutManager.HORIZONTAL, false));
         rv_list.setHorizontalScrollBarEnabled(true);
         rv_list.setAdapter(adapter);
+
 
     }
 
