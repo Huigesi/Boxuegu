@@ -111,6 +111,7 @@ public class ActivityVideoListActivity extends Activity {
 
 
 
+
     private void initView() {
         tvIntro = (TextView) findViewById(R.id.tv_intro);
         tvVideo = (TextView) findViewById(R.id.tv_video);
