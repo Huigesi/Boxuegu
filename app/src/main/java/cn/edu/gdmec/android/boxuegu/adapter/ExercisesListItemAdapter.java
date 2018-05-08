@@ -78,9 +78,6 @@ public class ExercisesListItemAdapter extends BaseAdapter {
             }else{
                 holder.tvContent.setText(bean.content);
             }
-
-
-
             holder.tvOrder.setBackgroundResource(bean.background);
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override

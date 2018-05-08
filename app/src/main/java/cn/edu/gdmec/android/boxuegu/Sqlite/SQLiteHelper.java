@@ -12,6 +12,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     private static final int DB_VERSION = 2;
     public static String DB_NAME = "bxg.db";
     public static final String U_USERINFO = "userinfo";
+    public static final String U_VIDEO_PLAY_LIST="videoplaylist";
 
     public SQLiteHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -27,11 +28,21 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 + "signature VARCHAR,"
                 + "QQ VARCHAR"
                 + ")");
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + U_VIDEO_PLAY_LIST + "( "
+                + "_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "userName VARCHAR, "
+                + "chapterId INT, "
+                + "videoId INT, "
+                + "videoPath VARCHAR,"
+                + "title VARCHAR,"
+                + "secondTitle VARCHAR"
+                + ")");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + U_USERINFO);
+        db.execSQL("DROP TABLE IF EXISTS "+U_VIDEO_PLAY_LIST);
         onCreate(db);
     }
 

@@ -1,7 +1,9 @@
 package cn.edu.gdmec.android.boxuegu.Utils;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.util.Xml;
 import android.widget.ImageView;
 
@@ -13,6 +15,8 @@ import java.util.List;
 
 import cn.edu.gdmec.android.boxuegu.Bean.CourseBean;
 import cn.edu.gdmec.android.boxuegu.Bean.ExercisesBean;
+import cn.edu.gdmec.android.boxuegu.Bean.VideoBean;
+import cn.edu.gdmec.android.boxuegu.Sqlite.SQLiteHelper;
 
 /**
  * Created by Administrator on 2018/3/31.
@@ -149,6 +153,7 @@ public class AnalysisUtils {
 
         return courseList;
     }
+
 
 
 }
